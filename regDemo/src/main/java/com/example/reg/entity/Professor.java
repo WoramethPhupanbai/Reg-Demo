@@ -25,14 +25,20 @@ public class Professor {
 	@Column(name = "tel")
 	private String tel;
 	
-	public Professor(String fname, String lname, String passWord, String iDCard, String tel) {
+	@Column(name = "citizen")
+	private String citizen;
+	
+	
+	public Professor(String iDCard, String fname, String lname, String passWord, String tel, String citizen) {
 		super();
+		this.iDCard = iDCard;
 		this.fname = fname;
 		this.lname = lname;
 		this.passWord = passWord;
-		this.iDCard = iDCard;
 		this.tel = tel;
+		this.citizen = citizen;
 	}
+	
 	public Professor() {
 		super();
 	}
@@ -66,6 +72,11 @@ public class Professor {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	
+	public String getCitizen() {
+		return citizen;
+	}
+	public void setCitizen(String citizen) {
+		this.citizen = citizen;
+	}
 	
 }
