@@ -1,9 +1,8 @@
 package com.example.reg.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.ArrayList;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Student")
@@ -13,7 +12,7 @@ public class Student {
 	@Column(name = "iDCard")
 	private String iDCard;
 	
-	@Column(name = "stuId")
+	@Column(name = "stuId",unique=true )
 	private String stuId;
 	
 	@Column(name = "passWord")
@@ -25,8 +24,15 @@ public class Student {
 	@Column(name = "lname")
 	private String lname;
 	
+	@Column(name = "tel")
 	private String tel;
-	public Student(String stuId, String passWord, String fname, String lname, String iDCard, String tel) {
+	
+	@Column(name = "email")
+	private String email;
+	
+	@Transient
+	private ArrayList<Student> listStudent = new ArrayList<Student>();
+	public Student(String stuId, String passWord, String fname, String lname, String iDCard, String tel,String email) {
 		super();
 		this.stuId = stuId;
 		this.passWord = passWord;
@@ -34,6 +40,7 @@ public class Student {
 		this.lname = lname;
 		this.iDCard = iDCard;
 		this.tel = tel;
+		this.email = email;
 	}
 	public Student() {
 		super();
@@ -75,5 +82,14 @@ public class Student {
 		this.tel = tel;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public ArrayList<Student> getListStudent() {
+		return listStudent;
+	}
 	
 }
