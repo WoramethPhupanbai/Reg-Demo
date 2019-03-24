@@ -12,7 +12,7 @@ public interface StudentRepository extends CrudRepository<Student,Long>{
 
 	public List<Student> findAll();
 	
-	public Student findByIDCard (String IDCard);
+	public Student findByIDCardStu (String IDCard);
 	
-	public Student findByEmail (String email);
+	public Student findByEmailStu (String email);
 }
