@@ -15,8 +15,7 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
-public class StudentConfiguration {
-
+public class ProfessorConfiguration {
 	@Autowired
 	DataSource dataSource;
 
@@ -41,7 +40,7 @@ public class StudentConfiguration {
 		}
 		protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests().antMatchers("/register").permitAll().anyRequest().authenticated().and().formLogin()
-			.loginPage("/doLogin").permitAll().and().logout().permitAll();
+					.loginPage("/doLogin").permitAll().and().logout().permitAll();
 
 			http.csrf().disable();
 		}
