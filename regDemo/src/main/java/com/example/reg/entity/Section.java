@@ -22,8 +22,11 @@ public class Section {
 	@Column(name = "sectionName")
 	private String sectionName;
 
+	/*@Transient
+	private ArrayList<SectionSubject> listSectionSubject = new ArrayList<SectionSubject>();*/
+	
 	@Transient
-	private ArrayList<Section> listSection = new ArrayList<Section>();
+	private ArrayList<ClassRoom> listClassRoom = new ArrayList<ClassRoom>();
 	
 	public Section(int sectionId, String sectionName) {
 		super();
@@ -50,9 +53,12 @@ public class Section {
 	public void setSectionName(String sectionName) {
 		this.sectionName = sectionName;
 	}
+	/*public ArrayList<SectionSubject> getListSectionSubject() {
+		return listSectionSubject;
+	}*/
 
-	public ArrayList<Section> getListSection() {
-		return listSection;
+	public ArrayList<ClassRoom> getListClassRoom() {
+		return listClassRoom;
 	}
 	
 	

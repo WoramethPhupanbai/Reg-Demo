@@ -35,7 +35,8 @@ public class Professor {
 	private String email;
 	
 	@Transient
-	private ArrayList<Student> listStudent = new ArrayList<Student>();
+	private ArrayList<ClassRoom> listClassRoom = new ArrayList<ClassRoom>();
+	
 	public Professor(String iDCard, String fname, String lname, String passWord, String tel, String citizen,String email) {
 		super();
 		this.iDCard = iDCard;
@@ -92,4 +93,9 @@ public class Professor {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public ArrayList<ClassRoom> getListClassRoom() {
+		return listClassRoom;
+	}
+	
 }

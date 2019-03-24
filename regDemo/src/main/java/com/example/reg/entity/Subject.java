@@ -1,11 +1,8 @@
 package com.example.reg.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.ArrayList;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Subject")
@@ -17,6 +14,9 @@ public class Subject {
 	
 	@Column(name = "subjectName")
 	private String subjectName;
+	
+	@Transient
+	private ArrayList<ClassRoom> listClassRoom = new ArrayList<ClassRoom>();
 	
 	public Subject(String subjectId, String subjectName) {
 		super();
@@ -38,6 +38,8 @@ public class Subject {
 	public void setSubjectName(String subjectName) {
 		this.subjectName = subjectName;
 	}
-	
+	public ArrayList<ClassRoom> getListClassRoom() {
+		return listClassRoom;
+	}
 	
 }
