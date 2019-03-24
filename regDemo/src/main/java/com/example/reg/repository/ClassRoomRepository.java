@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.example.reg.entity.Sectionstudent;
+import com.example.reg.entity.ClassRoom;
 
-public interface SectionStudentRepository extends CrudRepository<Sectionstudent,Long>{
-	public List<Sectionstudent> findAll();
+public interface ClassRoomRepository extends CrudRepository<ClassRoom,Long>{
+	public List<ClassRoom> findAll();
 }
