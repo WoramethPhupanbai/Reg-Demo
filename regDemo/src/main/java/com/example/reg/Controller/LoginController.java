@@ -44,7 +44,7 @@ public class LoginController {
 			String password = (String)req.get("password");
 			
 			stu.setStuId(stuId);
-			stu.setPassWord(password);
+			stu.setPassWordStu(password);
 			
 			if(idCard!=null) {
 				profes.setiDCard(idCard);
@@ -55,9 +55,9 @@ public class LoginController {
 			Iterable<Student> listStudent = studentRepority.findAll();
 			Iterable<Professor> listProfessor = professorRepority.findAll();
 
-			if(listStudent!=null&&!stu.getStuId().isEmpty()&&!stu.getPassWord().isEmpty()) {
+			if(listStudent!=null&&!stu.getStuId().isEmpty()&&!stu.getPassWordStu().isEmpty()) {
 				for(Student student : listStudent) {
-					if(student.getStuId().equalsIgnoreCase(stu.getStuId())&&student.getPassWord().equalsIgnoreCase(stu.getPassWord())) {
+					if(student.getStuId().equalsIgnoreCase(stu.getStuId())&&student.getPassWordStu().equalsIgnoreCase(stu.getPassWordStu())) {
 						res.put("student", student);
 						res.put(ResponseConstant.resCode, ResponseConstant.resCode_Success);
 						res.put(ResponseConstant.resDesc, ResponseConstant.successMessage);

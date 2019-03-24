@@ -15,24 +15,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.reg.entity.Student;
-import com.example.reg.entity.Subject;
-import com.example.reg.repository.SubjectRepository;
+import com.example.reg.entity.ClassRoom;
+import com.example.reg.repository.ClassRoomRepository;
 
 @Controller
 public class ListSubjectController {
 	@Autowired
-	SubjectRepository subjectRepority;
+	ClassRoomRepository classRoomRepository;
 	
 	@RequestMapping(value = "/listSubject", method = RequestMethod.GET)
 	public  @ResponseBody Map<String, Object> getListSubject(HttpServletRequest request,HttpSession session) {
 		Map<String, Object> res = new HashMap();
 		Student student = new Student();
 		student = (Student) session.getAttribute("student");
-		Iterable<Subject> listSubject = subjectRepority.findAll();
-		/*if(student.getStuId()!=null) {
-			res.put("listSubject", listSubject);
-		}*/
-		res.put("listSubject", listSubject);
+		Iterable<ClassRoom> listSectionStudent = classRoomRepository.findAll();
+		for(ClassRoom classRoom:listSectionStudent) {
+			if(student.getStuId().equalsIgnoreCase(classRoom.getClassRoomStudent().getStuId())) {
+				res.put("ClassRoom", classRoom);
+			}
+		}
 		return res;
 	}
 }
