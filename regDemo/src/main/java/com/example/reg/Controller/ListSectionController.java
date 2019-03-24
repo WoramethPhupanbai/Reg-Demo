@@ -16,17 +16,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.reg.entity.Professor;
 import com.example.reg.entity.Section;
-import com.example.reg.entity.Sectionstudent;
+import com.example.reg.entity.ClassRoom;
 import com.example.reg.entity.Student;
 import com.example.reg.repository.ProfessorRepository;
 import com.example.reg.repository.SectionRepository;
-import com.example.reg.repository.SectionStudentRepository;
+import com.example.reg.repository.ClassRoomRepository;
 import com.example.reg.repository.StudentRepository;
 
 @Controller
 public class ListSectionController {
 	@Autowired
-	SectionStudentRepository sectionStudentRepository;
+	ClassRoomRepository classRoomRepository;
 	
 	@Autowired
 	StudentRepository studentRepority;
@@ -39,10 +39,10 @@ public class ListSectionController {
 		Map<String, Object> res = new HashMap();
 		Professor profes = new Professor();
 		profes = (Professor) session.getAttribute("professor");
-		Iterable<Sectionstudent> listSectionStudent = sectionStudentRepository.findAll();
+		Iterable<ClassRoom> listSectionStudent = classRoomRepository.findAll();
 		profes = professorRepority.findByIDCard(profes.getiDCard());
-		for(Sectionstudent SectionStudent:listSectionStudent) {
-			if(profes.getiDCard().equals(SectionStudent.getStusec().getiDCard())) {
+		for(ClassRoom classRoom:listSectionStudent) {
+			if(profes.getiDCard().equals(classRoom.getClassRoomStudent().getiDCardStu())) {
 				res.put("listSectionStudent", listSectionStudent);
 			}
 		}
