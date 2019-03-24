@@ -16,13 +16,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.reg.entity.Grade;
 import com.example.reg.entity.Professor;
 import com.example.reg.entity.Section;
 import com.example.reg.entity.Student;
 import com.example.reg.entity.Subject;
+import com.example.reg.entity.SubjectGrade;
 import com.example.reg.repository.ClassRoomRepository;
+import com.example.reg.repository.GradeRepository;
 import com.example.reg.repository.ProfessorRepository;
 import com.example.reg.repository.StudentRepository;
+import com.example.reg.repository.SubjectGradeRepository;
+import com.example.reg.repository.SubjectRepository;
+
+import scala.annotation.meta.setter;
 
 @Controller
 public class EditGradeController {
@@ -30,10 +37,19 @@ public class EditGradeController {
 	ClassRoomRepository classRoomRepository;
 	
 	@Autowired
+	SubjectGradeRepository subjectGradeRepository;
+	
+	@Autowired
 	StudentRepository studentRepority;
 	
 	@Autowired
 	ProfessorRepository professorRepority;
+	
+	@Autowired
+	SubjectRepository subjectRepority;
+	
+	@Autowired
+	GradeRepository gradeRepority;
 	
 	@RequestMapping(value = "/getEditGrade")
 	public  @ResponseBody Map<String, Object> getEditGrade(@RequestParam String iDCard) {
@@ -55,13 +71,21 @@ public class EditGradeController {
 		if(req!=null) {
 			
 			String idCard = (String)req.get("iDCard");
+			String SubjectId = (String)req.get("SubjectId");
+			int gradeId = (int)req.get("gradeId");
 			Student stu = new Student();
+			Subject sub = new Subject();
+			Grade grade = new Grade();
 			
 			stu.setiDCardStu(idCard);
+			sub.setSubjectId(SubjectId);
+			grade.setIdGrade(gradeId);
 			
-			if(stu!=null) {
-				res.put("student", studentRepority.save(stu));
-			}
+			SubjectGrade subGrade = new SubjectGrade();
+			subGrade.getGadeSubject().setIdGrade(gradeId);
+			subGrade.getSubjectGrade().setSubjectId(SubjectId);
+			res.put("student", subjectGradeRepository.save(subGrade));
+			
 		}
 		
 		return res;

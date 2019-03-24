@@ -15,16 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.reg.entity.ClassRoom;
 import com.example.reg.entity.Student;
 import com.example.reg.repository.ClassRoomRepository;
-import com.example.reg.service.ExportService;
 
 @Controller
 public class ExportController {
 
 	@Autowired
 	ClassRoomRepository classRoomRepository;
-	
-	@Autowired
-    ExportService exportService;
 	
 	@RequestMapping(value = "/download", method = RequestMethod.GET)
 	public @ResponseBody Map<String, Object> download(Model model,HttpSession session) {
