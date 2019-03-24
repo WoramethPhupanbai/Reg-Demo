@@ -35,11 +35,11 @@ public class EditProfileController {
 		Map<String, Object> res = new HashMap();
 			
 			Student stu = new Student();
-			stu.setiDCard(iDCard);
+			stu.setiDCardStu(iDCard);
 			Professor profes = new Professor();
 			profes.setiDCard(iDCard);
 			if(stu!=null) {
-				stu = studentRepority.findByIDCard(stu.getiDCard());
+				stu = studentRepority.findByIDCardStu(stu.getiDCardStu());
 				res.put("stu", stu);
 			}
 			if(profes!=null) {
@@ -66,13 +66,13 @@ public class EditProfileController {
 			Student stu = new Student();
 			Professor profes = new Professor();
 			
-			stu.setiDCard(idCard);
-			stu.setPassWord(password);
-			stu.setFname(fname);
+			stu.setiDCardStu(idCard);
+			stu.setPassWordStu(password);
+			stu.setFnameStu(fname);
 			stu.setStuId(stuId);
-			stu.setLname(lname);
-			stu.setTel(tel);
-			stu.setEmail(email);
+			stu.setLnameStu(lname);
+			stu.setTelStu(tel);
+			stu.setEmailStu(email);
 			
 			profes.setiDCard(idCard);
 			profes.setPassWord(password);

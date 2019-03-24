@@ -20,11 +20,15 @@ import com.example.reg.entity.Professor;
 import com.example.reg.entity.Section;
 import com.example.reg.entity.Student;
 import com.example.reg.entity.Subject;
+import com.example.reg.repository.ClassRoomRepository;
 import com.example.reg.repository.ProfessorRepository;
 import com.example.reg.repository.StudentRepository;
 
 @Controller
 public class EditGradeController {
+	@Autowired
+	ClassRoomRepository classRoomRepository;
+	
 	@Autowired
 	StudentRepository studentRepority;
 	
@@ -36,9 +40,9 @@ public class EditGradeController {
 		Map<String, Object> res = new HashMap();
 			Student stu = new Student();
 			
-			stu.setiDCard(iDCard);
+			stu.setiDCardStu(iDCard);
 			
-			stu = studentRepority.findByIDCard(stu.getiDCard());
+			stu = studentRepority.findByIDCardStu(stu.getiDCardStu());
 			
 			res.put("stu", stu);
 		
@@ -52,10 +56,8 @@ public class EditGradeController {
 			
 			String idCard = (String)req.get("iDCard");
 			Student stu = new Student();
-			Subject subject = new Subject();
-			Section section = new Section();
 			
-			stu.setiDCard(idCard);
+			stu.setiDCardStu(idCard);
 			
 			if(stu!=null) {
 				res.put("student", studentRepority.save(stu));
