@@ -1,8 +1,6 @@
-# Reg-Demo
-Demo for Interview
-Requirement Tool
-JDK 8
-Mysql 5.7
-Spring Tool Suite
-Microsoft Excel
+# Requirement Tool
+JDK 8,
+Mysql 5.7,
+Spring Tool Suite,
+Microsoft Excel,
 Git Version 2.21.0
